@@ -1,0 +1,26 @@
+{
+  "name": "learnnode",
+  "version": "1.0.0",
+  "description": "Simple Website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A64Danil/learnnode.git"
+  },
+  "author": "Danil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A64Danil/learnnode/issues"
+  },
+  "homepage": "https://github.com/A64Danil/learnnode#readme",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "jade": "*",
+    "nodemailer": "*"
+
+  }
+}
