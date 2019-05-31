@@ -6,13 +6,23 @@ var nodemailer = require('nodemailer');
 
 var app = express();
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.get('/', function(req, res) {
-    console.log("something happens");
-    res.send('<h1>Hello world</h1>');
+    res.render('index', {title: 'Welcome'});
+})
+
+app.get('/about', function(req, res) {
+    res.render('about', {title: 'About Page'});
 })
 
 app.listen(3000);
-console.log('Server is running on port 3000...')
+console.log('Server is running on port 3000...');
+
