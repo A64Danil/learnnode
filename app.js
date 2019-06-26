@@ -1,15 +1,17 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+var createError = require('http-errors');
 var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
-var expressValidator = require('express-validator');
 var LocalStrategy = require('passport-local').Strategy;
+var expressValidator = require('express-validator');
 var multer = require('multer');
 var upload = multer({dest: './upload'});
 var flash = require('connect-flash');
+var bcrypt = require('bcryptjs');
+
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
@@ -69,6 +71,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+
+app.get('*', function (req, res, next) {
+  res.locals.user = req.user || null;
+  next();
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
