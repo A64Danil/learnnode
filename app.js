@@ -5,9 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var multer = require('multer');
+var upload = multer({dest: 'uploads/'});
 var moment = require('moment');
 var expressValidator = require('express-validator');
 
+var mongo = require('mongodb');
 var db = require('monk')('localhost/nodeblog');
 
 var indexRouter = require('./routes/index');
@@ -24,6 +26,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Express Session
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}))
 
 // Express Validator
 app.use(expressValidator({
@@ -44,11 +53,11 @@ app.use(expressValidator({
 }));
 
 // Connect-Flash
-app.use(flash());
+app.use(require('connect-flash')());
 app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res)
+  res.locals.messages = require('express-messages')(req, res);
   next();
-})
+});
 
 // Make our db accessible to our router
 app.use(function (req,res,next) {
