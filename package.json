@@ -13,7 +13,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "mongodb": "*",
-    "monk": "https://github.com/vccabral/monk.git",
+    "monk": "~7.0.0",
     "connect-flash": "*",
     "express-validator": "*",
     "express-session": "*",
