@@ -7,6 +7,49 @@
 <body>
     1th commit test
 
+    Изначальная команда:`
+
+    C:\mongodb\bin>mongod --directoryperdb --dbpath C:\mongodb\data\db --logpath C:\mongodb\log\mongodb.log --logappend --rest --install
+
+
+    я немного изменил. вот мой краткий конспект
+
+    * Вариант настройки конфигурации 3(то что делал)
+    * из командной строки с правами администратора
+    * -->> C:\DateBase\mongodb\bin>mongod --directoryperdb --dbpath C:\DataBase\mongodb\data\db
+    * -->> C:\DateBase\mongodb\bin>mongod --logpath C:\DataBase\mongodb\log\mongo.log --logappend
+    * --directoryperdb // для каждой bd создаём свою собственную папку
+    * --dbpath C:\DataBase\mongodb\data\db // куда складываем db
+    * --logpath C:\DataBase\mongodb\log\mongo.log // куда складываем логи
+    * --logappend // конкатенируем различные логи
+    * --install // для использования mongo как сервиса
+    * запуск службы если настроены права доступа(зависит от версии Windows) либо из консоли под правами администратора -->> C:\DateBase\mongodb\bin>net start MongoDB
+    * C:\DateBase\mongodb\bin>mongo // запуск консоли для работы с MongoDB
+
+    * После того, как служба запущена, подключимся к ней с помощью команды: $ mongo
+
+    * для доступа к командам mongo из любой директории настроим переменные среды
+    * свойства компьютера -->> дополнительные параметры системы -->> переменные среды -->> системные переменные -> Path -->> изменить -->> создать -->> через обзор находим где установлено mongodb - папка bin и добавляем
+
+    * команды для работы с DB из консоли mongo
+    * show dbs // показать все базы данных
+    * use dbname // use users - создание DB || если DB уже есть, она станет активной. В нашем случае это nodeauth
+    * db.users.insert({a:20, b:30}) // добавить данные в коллекцию users, если коллекции нет -> создать коллекцию и добавить данные
+    * db.users.find() // Найти всех юзеров
+    * db.users.find().pretty() // Найти всех юзеров и показать в красивом формате
+    * db.users.update() // Обновить инфу о юзере
+    * db.users.update({username: 'test'}, {$set: {email: 'test@gmail.com'}}); // Обновить инфу о юзере
+    * db.users.remove({username: 'Danil'}); // найти юзера и удалить
+    * db.stats() // информация о текущей DB
+    * db.dropDatabase() // удалить текущую DB
+    * db // актуальная DB
+    * db.createCollection('users23') // создать коллекцию users23 в текущей DB
+    * show collections // показать все коллекции в текущей DB
+    * db.users23.insert({a:20, b:30}) // добавить данные в коллекцию users23
+
+    * db.users.remove({}) ИЛИ db.users.deleteMany({}) // удалить все записи в базе
+
+
     npm install express-generator
 
 
