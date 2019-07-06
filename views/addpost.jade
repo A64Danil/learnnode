@@ -21,9 +21,6 @@ block content
             label Body
             textarea.form-control(name='body', id='body')
         .form-group
-            label Body2
-            textarea.form-control(name='body2', id='body2')
-        .form-group
             label Main Image:
             input.form-control(name='mainimage', type='file')
         .form-group
@@ -34,4 +31,4 @@ block content
         input.btn.btn-default(name='submit',type='submit',value='Save')
         script(src='/ckeditor/ckeditor.js')
         script
-            | CKEDITOR.replace('body2');
+            | CKEDITOR.replace('body');

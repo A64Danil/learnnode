@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var multer = require('multer');
-var upload = multer({dest: 'uploads/'});
+var upload = multer({dest: './public/uploads'});
 var moment = require('moment');
 var expressValidator = require('express-validator');
 
@@ -20,6 +20,11 @@ var app = express();
 
 
 app.locals.moment = moment;
+
+app.locals.truncateText = function(text, length){
+  var truncatedText = text.substring(0, length);
+  return truncatedText;
+}
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
