@@ -10,6 +10,7 @@
         "all": "npm run build && npm run test"
     },
     "dependencies": {
+        "connect-flash": "^0.1.1",
         "construx": "^1.0.0",
         "construx-copier": "^1.0.0",
         "construx-dustjs": "^1.1.0",
@@ -17,8 +18,11 @@
         "dust-makara-helpers": "^4.2.0",
         "eslint": "^1.10.3",
         "express": "^4.12.2",
+        "express-messages": "^1.0.1",
         "kraken-js": "^2.0.0",
         "makara": "^2.0.3",
+        "mongodb": "^3.2.7",
+        "mongoose": "^5.6.4",
         "requirejs": "^2.3.6"
     },
     "devDependencies": {

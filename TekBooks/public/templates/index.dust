@@ -1,5 +1,40 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
+    <div class="large-3 columns book">
+        <img src="/img/node1.jpg" alt="">
+        <h4>Professional Node.js</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <div class="price">Buy it for <span>$19.99</span></div>
+        <br>
+        <a href="/books/details/1" class="button small">Book Details</a>
+
+    </div>
+    <div class="large-3 columns book">
+        <img src="/img/node2.jpg" alt="">
+        <h4>Node.js BluePrints</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <div class="price">Buy it for <span>$29.99</span></div>
+        <br>
+        <a href="/books/details/1" class="button small">Book Details</a>
+
+    </div>
+    <div class="large-3 columns book">
+        <img src="/img/node3.jpg" alt="">
+        <h4>Node.js Webdevelopment</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <div class="price">Buy it for <span>$14.99</span></div>
+        <br>
+        <a href="/books/details/1" class="button small">Book Details</a>
+
+    </div>
+    <div class="large-3 columns book">
+        <img src="/img/node4.jpg" alt="">
+        <h4>Intro to Node.js</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <div class="price">Buy it for <span>$9.99</span></div>
+        <br>
+        <a href="/books/details/1" class="button small">Book Details</a>
+
+    </div>
 {/body}
