@@ -10,4 +10,4 @@ module.exports = function (router) {
         res.render('books/details');
 
     });
-}
+};
