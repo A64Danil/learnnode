@@ -2,22 +2,20 @@
 
 {<body}
     <div class="large-4 columns book">
-        <img src="/img/node1.jpg" alt="">
+        <img src="{book.cover}" alt="">
     </div>
     <div class="large-8 columns book">
-        <h2>Professional Node.js</h2>
+        <h2>{book.title}</h2>
         <ul class="bookInfo">
-            <li>Category: Node.js</li>
-            <li>Author: John Doe</li>
-            <li>Publisher: Some Publisher</li>
+            <li>Category: {book.category}</li>
+            <li>Author: {book.author}</li>
+            <li>Publisher: {book.publisher}</li>
         </ul>
         <br>
 
-        <div class="price"><span>$14.99</span></div>
+        <div class="price"><span>${book.price}</span></div>
         <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam culpa, dolorum earum et id illo nostrum
-            tempora veritatis! Ab blanditiis culpa cum molestiae neque, nisi numquam voluptatem! Est, fugit quam!
-        </p>
+        <p>{book.description} </p>
         <a href="" class="button success">Add to Cart</a>
     </div>
 {/body}

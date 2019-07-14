@@ -34,6 +34,7 @@
 
 <div id="wrapper">
     <div class="large-12 grid-x">
+        {messages|s}
         {+body /}
     </div>
 </div>
