@@ -3,6 +3,11 @@
 var express = require('express');
 var kraken = require('kraken-js');
 
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var session = require('express-session');
+
 
 var options, app;
 
@@ -22,6 +27,26 @@ options = {
 
 app = module.exports = express();
 app.use(kraken(options));
+
+
+
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Express Session
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}))
+
+
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+});
+
 app.on('start', function () {
     console.log('Application ready to serve requests.');
     console.log('Environment: %s', app.kraken.get('env:env'));
