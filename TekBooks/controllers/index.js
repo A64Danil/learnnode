@@ -9,9 +9,14 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
 
-        req.flash('success', "test");
+
+        // res.send('<script>name = "Eugene";</script>');
+        res.locals.flasher = {
+            type: "success",
+            text: "This is a flash text!"
+        };
         res.render('index', model);
-        
+
         
     });
 

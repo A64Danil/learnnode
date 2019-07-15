@@ -2,4 +2,43 @@
 
 {<body}
     <h1>{@pre type="content" key="greeting"/}</h1>
+
+    <div class="explain">
+        <h3>Для того чтобы создать свои сообщения, нужно:</h3>
+    <ol>
+        <li>Создать локальную переменную. В том месте где раньше вызывался флэш, теперь пишем так (передаём объект):
+            <pre>
+                res.locals.flasher = {
+                    type: "success",
+                    text: "This is a flash text!"
+                };
+            </pre>
+
+        </li>
+        <li>В мастер-шаблоне выдедить место под переменную, добавив условие для показа (не пустой текст):
+            <pre>
+                &#123;#flasher.text&#125;
+                &#60;div class="flasher-alerts &#123;flasher.type&#125;"&#62;&#123;flasher.text&#125;&#60;/div&#62;
+                &#123;/flasher.text&#125;
+            </pre>
+            Где flasher - наш объект из предыдущего пункта (с ключами type и текст). Type используется для задания класса.
+        </li>
+
+        <li>В стили добавить новое правило для флэшера:
+            <pre>
+                .flasher-alerts.success {
+                  padding: 15px;
+                  margin-top: 10px;
+                  margin-bottom: 20px;
+                  border:1px solid transparent;
+                  border-radius: 4px;
+                  color: #3c763d;
+                  background-color: #dff0d8;
+                  border-color: #d6e9c6;
+                  list-style: none;
+                }
+            </pre>
+        </li>
+    </ol>
+    </div>
 {/body}
