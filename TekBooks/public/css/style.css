@@ -41,3 +41,7 @@ footer {
 .flasher-alerts {
     width: 100%;
 }
+
+h2 span {
+    font-size: 18px;
+}

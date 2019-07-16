@@ -1,0 +1,14 @@
+{>"layouts/master" /}
+{<title}
+    About Tekbooks
+{/title}
+
+{<body}
+<div class="row">
+    <div class="large-12 grid-x">
+        <h2>About Us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aspernatur, blanditiis corporis ducimus inventore libero minima, necessitatibus officia officiis porro quaerat, vel vero. Incidunt iure magnam modi quod voluptate?</span><span>Atque consectetur cum deserunt dolores doloribus earum et hic in inventore ipsa iste maxime molestiae nemo quo quos saepe sapiente sequi sint, sit tempora tempore temporibus tenetur veniam veritatis voluptatem.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aspernatur, blanditiis corporis ducimus inventore libero minima, necessitatibus officia officiis porro quaerat, vel vero. Incidunt iure magnam modi quod voluptate?</span><span>Atque consectetur cum deserunt dolores doloribus earum et hic in inventore ipsa iste maxime molestiae nemo quo quos saepe sapiente sequi sint, sit tempora tempore temporibus tenetur veniam veritatis voluptatem.</p>
+    </div>
+</div>
+{/body}
