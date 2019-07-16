@@ -3389,7 +3389,7 @@ select {
   .callout.warning {
     background-color: #fff3d9;
     color: #0a0a0a; }
-  .callout.alert {
+  .callout.alert, .callout.error {
     background-color: #f7e4e1;
     color: #0a0a0a; }
   .callout.small {

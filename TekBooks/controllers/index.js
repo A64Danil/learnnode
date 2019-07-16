@@ -17,7 +17,7 @@ module.exports = function (router) {
            var model = {
                books: books
            }
-           // req.flash('success', "test");
+
            res.render('index', model);
        });
     });

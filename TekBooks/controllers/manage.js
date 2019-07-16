@@ -9,7 +9,6 @@ module.exports = function (router) {
     });
 
     router.get('/books', function (req, res){
-        console.log('start RENDER manage/books/index');
         Book.find({}, function (err, books) {
             if(err) {
                 console.log(err);
@@ -19,9 +18,7 @@ module.exports = function (router) {
                 books: books
             }
 
-            console.log('Before RENDER manage/books/index');
             res.render('manage/books/index', model);
-            console.log('After RENDER manage/books/index');
         });
 
 
@@ -54,18 +51,22 @@ module.exports = function (router) {
         var cover =  req.body.cover && req.body.cover.trim();
 
         if (title == '' || price == '') {
-            console.log('YOU HAVE EMPTY TITLE');
-            // req.flash('error', "Please fill out required fileds");
-            res.location('/manage/books/add');
-            res.redirect('/manage/books/add');
+            res.locals.flasher = {
+                type: "error",
+                text: "Please fill out required fileds"
+            };
+            res.location('/manage/books/add?type=error&text=Please fill out required fileds');
+            res.redirect('/manage/books/add?type=error&text=Please fill out required fileds');
             return;
         }
 
         if (isNaN(price)) {
-            console.log('YOU HAVE isNaN Price');
-            // req.flash('error', "Price must be a number");
-            res.location('/manage/books/add');
-            res.redirect('/manage/books/add');
+            res.locals.flasher = {
+                type: "error",
+                text: "Price must be a number"
+            };
+            res.location('/manage/books/add?type=error&text=Price must be a number');
+            res.redirect('/manage/books/add?type=error&text=Price must be a number');
             return;
         }
 
@@ -83,17 +84,13 @@ module.exports = function (router) {
             if (err) {
                 console.log('save error', err)
             }
-            console.log('************ WE ARE HERE  23-55 **************')
-            // req.flash('error', "Book Added");
-            res.location('/manage/books');
-            res.redirect('/manage/books');
-            console.log('************ after redirect **************')
+            res.location('/manage/books?type=success&text=Book Added!');
+            res.redirect('/manage/books?type=success&text=Book Added!');
         })
     });
 
     router.get('/categories', function (req, res){
         res.render('manage/categories/index');
-
     });
 
 
