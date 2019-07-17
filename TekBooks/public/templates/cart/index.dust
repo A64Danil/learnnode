@@ -20,10 +20,17 @@
                 <tbody>
                     {#cart.items}
                     <tr>
-                        <td><a href="books/details/{._id}">{.title}</a></td>
+                        <td><a href="books/details/{.item}">{.title}</a></td>
                         <td>{.qty}</td>
                         <td>$ {@math key="{.price}" method="multiply" operand="{.qty}" /}</td>
-                        <td></td>
+                        <td>
+                            <form action="/cart/remove/{.item}" method="post">
+                                <input type="submit" value="Delete" class="button tiny alert removeBook">
+                                <input type="hidden" name="_csrf" value="{_csrf}">
+                                <input type="hidden" name="_method" value="DELETE">
+
+                            </form>
+                        </td>
                     </tr>
                     {/cart.items}
                 </tbody>

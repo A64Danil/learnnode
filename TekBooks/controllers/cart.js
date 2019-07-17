@@ -54,11 +54,22 @@ module.exports = function (router) {
     });
 
     router.get('/remove', function (req, res) {
-        // get cart from session
-        console.log(req.session.cart)
         req.session.cart = {};
         res.location('/cart?type=success&text=Cart is emty now!');
         res.redirect('/cart?type=success&text=Cart is emty now!');
+    });
+
+
+    router.post('/remove/:id', function (req, res) {
+        var cart = req.session.cart;
+
+        var bookName = cart[req.params.id].title;
+        delete cart[req.params.id];
+        req.session.cart = cart;
+
+
+        res.location('/cart?type=success&text=Book "' + bookName + '" was deleted!');
+        res.redirect('/cart?type=success&text=Book "' + bookName + '" was deleted!');
     });
 
 };
