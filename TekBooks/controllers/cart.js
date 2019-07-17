@@ -51,5 +51,14 @@ module.exports = function (router) {
 
             res.redirect('/cart')
         })
-    })
-}
+    });
+
+    router.get('/remove', function (req, res) {
+        // get cart from session
+        console.log(req.session.cart)
+        req.session.cart = {};
+        res.location('/cart?type=success&text=Cart is emty now!');
+        res.redirect('/cart?type=success&text=Cart is emty now!');
+    });
+
+};
