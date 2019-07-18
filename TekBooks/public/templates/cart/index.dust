@@ -21,7 +21,22 @@
                     {#cart.items}
                     <tr>
                         <td><a href="books/details/{.item}">{.title}</a></td>
-                        <td>{.qty}</td>
+                        <td>
+                            <div class="grid-x">
+                                <form action="/cart/removeone/{.item}" method="post">
+                                    <input type="submit" value="-" class="button tiny">
+                                    <input type="hidden" name="_csrf" value="{_csrf}">
+                                    <input type="hidden" name="_method" value="UPDATE">
+                                </form>
+                                <div class="itemQty">{.qty}</div>
+                                <form action="/cart/addone/{.item}" method="post">
+                                    <input type="submit" value="+" class="button tiny">
+                                    <input type="hidden" name="_csrf" value="{_csrf}">
+                                    <input type="hidden" name="_method" value="UPDATE">
+                                </form>
+                            </div>
+
+                        </td>
                         <td>$ {@math key="{.price}" method="multiply" operand="{.qty}" /}</td>
                         <td>
                             <form action="/cart/remove/{.item}" method="post">

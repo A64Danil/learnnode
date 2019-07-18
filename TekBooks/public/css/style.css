@@ -45,3 +45,8 @@ footer {
 h2 span {
     font-size: 18px;
 }
+
+.itemQty {
+    padding: 2px 10px;
+    font-weight: bold;
+}
