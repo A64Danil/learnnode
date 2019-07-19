@@ -1,0 +1,24 @@
+{
+  "name": "chatio",
+  "version": "1.0.0",
+  "description": "Simple chat app",
+  "main": "server.js",
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A64Danil/learnnode.git"
+  },
+  "author": "Danil X",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A64Danil/learnnode/issues"
+  },
+  "homepage": "https://github.com/A64Danil/learnnode#readme"
+}
