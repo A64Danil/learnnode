@@ -1,0 +1,35 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Simple Portfolio",
+  "main": "app.js",
+  "dependencies": {
+    "express": "*",
+    "express-validator": "*",
+    "express-handlebars": "*",
+    "connect-flash": "*",
+    "express-session": "*",
+    "moment": "*",
+    "multer": "*",
+    "mysql": "*",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A64Danil/learnnode.git"
+  },
+  "author": "Danil X",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A64Danil/learnnode/issues"
+  },
+  "homepage": "https://github.com/A64Danil/learnnode#readme"
+}
