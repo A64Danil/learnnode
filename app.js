@@ -8,13 +8,14 @@ var expressValidator = require('express-validator');
 var session = require('express-session');
 var flash = require('connect-flash');
 var multer = require('multer');
-var upload = multer({dest: './public/imgages/portfolio'});
+var upload = multer({dest: './public/images/portfolio'});
 
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
 
 var app = express();
+var router = express.Router();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,10 +68,10 @@ app.listen(app.get('port'), function () {
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
+//
 // // error handler
 // app.use(function(err, req, res, next) {
 //   // set locals, only providing error in development
@@ -81,5 +82,5 @@ app.use(function(req, res, next) {
 //   res.status(err.status || 500);
 //   res.render('error');
 // });
-
-module.exports = app;
+//
+// module.exports = app;
