@@ -63,6 +63,7 @@ router.post('/add', upload.single('projectimage'), function(req, res, next) {
       errors: "Something going wrong!",
       title: title,
     });
+    // res.redirect('/admin/add?type=error&text=Something going wrong!');
     console.log("Have errors");
     console.log(errors);
   } else {
@@ -86,7 +87,7 @@ router.post('/add', upload.single('projectimage'), function(req, res, next) {
 
     req.flash('success_msg', 'Project Added');
 
-    res.redirect('/admin');
+    res.redirect('/admin?type=success&text=Project Added!');
   }
 
 
