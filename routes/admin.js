@@ -3,8 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var upload = multer({dest: './public/images/portfolio'});
 var mysql = require('mysql');
-
-const { check, validationResult } = require('express-validator');
+var validation = require('validator');
 
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -40,21 +39,34 @@ router.post('/add', upload.single('projectimage'), function(req, res, next) {
   }
 
   // Form Field Validation
-  req.checkBody('title', 'Title field is requires').notEmpty();
-  req.checkBody('service', 'Service field is requires').notEmpty();
+  // req.checkBody('title', 'Title field is requires').notEmpty();
+  // req.checkBody('service', 'Service field is requires').notEmpty();
 
-  var errors = req.validationErrors();
+  var errors = [];
+  if(validation.isEmpty(req.body.title)) errors.push("Title is empty")
+  if(validation.isEmpty(req.body.service)) errors.push("Service is empty")
+  // var errors = req.validationErrors();
 
-  if(errors){
+
+  console.log("errors.length " + errors.length);
+
+  if(errors.length > 0){
+    // res.render('admin/add', {
+    //   errors: errors,
+    //   title: title,
+    //   description: description,
+    //   service: service,
+    //   client: client,
+    //   url: url
+    // });
     res.render('admin/add', {
-      errors: errors,
+      errors: "Something going wrong!",
       title: title,
-      description: description,
-      service: service,
-      client: client,
-      url: url
     });
+    console.log("Have errors");
+    console.log(errors);
   } else {
+    console.log("WE ARE IN ELESE before PROJECT")
     var project = {
       title: title,
       description: description,
@@ -64,17 +76,20 @@ router.post('/add', upload.single('projectimage'), function(req, res, next) {
       url: url,
       image: projectImageName
     };
+
+    var query = connection.query('INSERT INTO projects SET ?', project, function (err, result) {
+      // Project Inserted!
+      console.log(project)
+      console.log('Error: ' + err);
+      console.log('Success: ' + result);
+    });
+
+    req.flash('success_msg', 'Project Added');
+
+    res.redirect('/admin');
   }
 
-  var query = connection.query('INSERT INTO projects SET ?', project, function (err, result) {
-    // Project Inserted!
-    console.log('Error: ' + err);
-    console.log('Success: ' + result);
-  });
 
-  req.flash('success_msg', 'Project Added');
-
-  res.redirect('/admin');
 
 });
 

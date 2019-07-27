@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple Portfolio",
   "main": "app.js",
   "dependencies": {
@@ -11,6 +11,7 @@
     "express-handlebars": "*",
     "express-session": "*",
     "express-validator": "^6.1.1",
+    "validator": "*",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "moment": "*",
