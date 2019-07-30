@@ -7,8 +7,8 @@ var validation = require('validator');
 
 var connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: '#onix13$',
+  user: 'onix',
+  password: 'test',
   database: 'portfolio'
 });
 
