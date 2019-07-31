@@ -1,5 +1,12 @@
 <a href="/admin" class="button secondary">Go Back</a>
 <h3>Edit Project</h3>
+{{#if errors}}
+    <ul class="error">
+        {{#each errors}}
+            <li>{{text}}</li>
+        {{/each}}
+    </ul>
+{{/if}}
 <form method="post" action="/admin/edit/{{project.id}}" enctype="multipart/form-data">
     <div class="form-group">
         <label>Title</label>

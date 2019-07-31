@@ -45,25 +45,21 @@ router.post('/add', upload.single('projectimage'), function(req, res, next) {
 
 
   var errors = [];
-  if(validation.isEmpty(req.body.title)) errors.push("Title is empty");
-  if(validation.isEmpty(req.body.service)) errors.push("Service is empty");
+  if(validation.isEmpty(req.body.title)) errors.push({text: "Title is empty. Title is requires."});
+  if(validation.isEmpty(req.body.service)) errors.push({text: "Service is empty. Service is requires."});
 
   if(errors.length > 0){
-    // res.render('admin/add', {
-    //   errors: errors,
-    //   title: title,
-    //   description: description,
-    //   service: service,
-    //   client: client,
-    //   url: url
-    // });
     res.render('admin/add', {
-      errors: "Something going wrong!",
-      title: title,
+      errors: errors,
+      project: {
+            title: title,
+            description: description,
+            service: service,
+            client: client,
+            date: projectdate,
+            url: url
+        }
     });
-    // res.redirect('/admin/add?type=error&text=Something going wrong!');
-    console.log("Have errors");
-    console.log(errors);
   } else {
     var project = {
       title: title,
@@ -77,12 +73,11 @@ router.post('/add', upload.single('projectimage'), function(req, res, next) {
 
     var query = connection.query('INSERT INTO projects SET ?', project, function (err, result) {
       // Project Inserted!
-      console.log(project)
       console.log('Error: ' + err);
       console.log('Success: ' + result);
     });
 
-    req.flash('success_msg', 'Project Added');
+    // req.flash('success_msg', 'Project Added');
     res.redirect('/admin?type=success&text=Project Added!');
   }
 
@@ -98,6 +93,7 @@ router.get('/edit/:id', function (req,res,next) {
 });
 
 router.post('/edit/:id', upload.single('projectimage'), function(req, res, next) {
+    console.log('>>>>>>>>>>>>>>>> ID : ' + req.params.id)
     // Get Form Valuse
     var title = req.body.title;
     var description = req.body.description;
@@ -114,27 +110,25 @@ router.post('/edit/:id', upload.single('projectimage'), function(req, res, next)
 
 
     var errors = [];
-    if(validation.isEmpty(req.body.title)) errors.push("Title is empty");
-    if(validation.isEmpty(req.body.service)) errors.push("Service is empty");
+    if(validation.isEmpty(req.body.title)) errors.push({text: "Title is empty. Title is requires."});
+    if(validation.isEmpty(req.body.service)) errors.push({text: "Service is empty. Service is requires."});
 
     if(errors.length > 0){
-        // res.render('admin/add', {
-        //   errors: errors,
-        //   title: title,
-        //   description: description,
-        //   service: service,
-        //   client: client,
-        //   url: url
-        // });
-        res.render('admin/add', {
-            errors: "Something going wrong!",
-            title: title,
-        });
-        // res.redirect('/admin/add?type=error&text=Something going wrong!');
-        console.log("Have errors");
+        console.log("------------------------- errors.length " + errors.length);
+        console.log("------------------------- errors: ");
         console.log(errors);
+        res.render('admin/edit/4', {
+            errors: errors,
+            project: {
+                title: title,
+                description: description,
+                service: service,
+                client: client,
+                date: projectdate,
+                url: url
+            }
+        });
     } else {
-
 
         if(req.file) {
             var project = {
@@ -158,19 +152,26 @@ router.post('/edit/:id', upload.single('projectimage'), function(req, res, next)
         }
 
 
-
-
         var query = connection.query('UPDATE projects SET ? WHERE id = ' + req.params.id, project, function (err, result) {
             // Project Inserted!
-            console.log(project)
             console.log('Error: ' + err);
             console.log('Success: ' + result);
         });
 
-        req.flash('success_msg', 'Project Updated');
+        // req.flash('success_msg', 'Project Updated');
         res.redirect('/admin?type=success&text=Project Updated!');
     }
 
+});
+
+router.delete('/delete/:id', function (req, res) {
+    connection.query('DELETE FROM Projects WHERE  id = ' + req.params.id, function (err, result) {
+        if (err) throw err;
+        console.log('deleted ' + result.affectedRows + ' rows')
+    });
+    req.flash('success_msg', 'Project Deleted');
+    // res.redirect('/admin?type=success&text=Project Updated!');
+    res.sendStatus(200);
 });
 
 module.exports = router;
