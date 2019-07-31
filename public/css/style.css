@@ -11,3 +11,5 @@ a {
 .padding {
   padding: 10px;
 }
+
+.small-img{max-width: 120px;}
