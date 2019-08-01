@@ -93,7 +93,6 @@ router.get('/edit/:id', function (req,res,next) {
 });
 
 router.post('/edit/:id', upload.single('projectimage'), function(req, res, next) {
-    console.log('>>>>>>>>>>>>>>>> ID : ' + req.params.id)
     // Get Form Valuse
     var title = req.body.title;
     var description = req.body.description;
@@ -114,12 +113,10 @@ router.post('/edit/:id', upload.single('projectimage'), function(req, res, next)
     if(validation.isEmpty(req.body.service)) errors.push({text: "Service is empty. Service is requires."});
 
     if(errors.length > 0){
-        console.log("------------------------- errors.length " + errors.length);
-        console.log("------------------------- errors: ");
-        console.log(errors);
-        res.render('admin/edit/4', {
+        res.render('admin/edit', {
             errors: errors,
             project: {
+                id: req.params.id,
                 title: title,
                 description: description,
                 service: service,
