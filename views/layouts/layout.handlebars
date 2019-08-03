@@ -18,50 +18,18 @@
 <div class="grid">
     <div class="col_12">
         <div class="col_9">
-            <h3>Welcome To Elearn</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetuer <em>adipiscing elit</em>, sed diam nonummy nibh euismod
-                tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation <strong>ullamcorper suscipit lobortis</strong> nisl ut aliquip ex ea commodo consequat.
-                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat</p>
-        </div>
+            {{{body}}}
+         </div>
 
         <div class="col_3">
-            <h5>Student & Instructor Login</h5>
-            <form>
-                <label>Username: </label>
-                <input type="text" name="username">
-                <label>Password: </label>
-                <input type="password" name="password">
-                <input class="button" type="submit" value="submit">
-            </form>
+            {{>login}}
 
 
         </div>
 
         <hr />
 
-        <div class="col_4">
-            <h4>HTML 101</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis</p>
-            <a class="button" href="#">View Class</a>
-        </div>
-
-        <div class="col_4">
-            <h4>Intro To PHP</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis</p>
-            <a class="button" href="#">View Class</a>
-        </div>
-
-        <div class="col_4">
-            <h4>Learn Node.js</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis</p>
-            <a class="button" href="#">View Class</a>
-        </div>
-
+        {{>classes}}
     </div>
 
 </div><!-- END GRID -->
