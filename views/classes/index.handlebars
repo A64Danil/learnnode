@@ -1,0 +1,11 @@
+<h2>Classes</h2>
+{{#each classes}}
+    <div class="block">
+        <h3>{{tite}}</h3>
+        <p>
+            {{description}}
+        </p>
+        <p>Instructor: <strong>{{instructor}}</strong></p>
+        <a href="/classes/{{_id}}/details" class="button">Class Detail</a>
+    </div>
+ {{/each}}
