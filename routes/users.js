@@ -34,39 +34,73 @@ router.post('/register', function (req, res, next) {
   var password2 = req.body.password2;
   var type = req.body.type;
 
-
-  console.log('router.post BEFORE validation');
-
   // Form Validation
-  // req.checkBody('first_name', 'First name field is required').notEmpty();
-  // req.checkBody('last_name', 'Last name field is required').notEmpty();
-  // req.checkBody('email', 'Email field is required').notEmpty();
-  // req.checkBody('email', 'Email must be a valid email address').isEmail();
-  // req.checkBody('username', 'Username field is required').notEmpty();
-  // req.checkBody('password', 'Password field is required').notEmpty();
-  // req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
   var errors = [];
   if(validation.isEmpty(req.body.first_name)) errors.push({msg: "First name is empty. First name is requires."});
   if(validation.isEmpty(req.body.last_name)) errors.push({msg: "Last name is empty. Last name is requires."});
   if(validation.isEmpty(req.body.email)) errors.push({msg: "Email is empty. Email is requires."});
-  if(validation.isEmail(req.body.email)) errors.push({msg: "Email must be a valid email address."});
+  if(!validation.isEmail(req.body.email)) errors.push({msg: "Email must be a valid email address."});
   if(validation.isEmpty(req.body.username)) errors.push({msg: "Username is empty. Username is requires."});
   if(validation.isEmpty(req.body.password)) errors.push({msg: "Password is empty. Password is requires."});
   if(validation.isEmpty(req.body.password2)) errors.push({msg: "Password2 is empty. Password2 is requires."});
   if(!validation.equals(req.body.password2, req.body.password)) errors.push({msg: "Passwords do not match."});
 
-  console.log('router.post AFTER validation');
 
-
-  if (errors) {
+  if (errors.length > 0) {
     console.log('Errors');
     console.log(errors);
     res.render('users/register', {
       errors: errors
     });
   } else {
+    var newUser = new User({
+      email: email,
+      username: username,
+      password: password,
+      type: type
+    });
 
+    if(type == 'student'){
+      console.log('Registering Student');
+
+      var newStudent = new Student({
+        first_name: first_name,
+        last_name: last_name,
+        adress: [{
+          street_address: street_address,
+          city: city,
+          state: state,
+          zip: zip
+        }],
+        email: email,
+        username: username
+      });
+
+      User.saveStudent(newUser, newStudent, function (err, user) {
+        console.log('Student created')
+      });
+    } else {
+      console.log('Registering Instructor');
+      var newInstructor = new Штыекгсещк({
+        first_name: first_name,
+        last_name: last_name,
+        adress: [{
+          street_address: street_address,
+          city: city,
+          state: state,
+          zip: zip
+        }],
+        email: email,
+        username: username
+      });
+
+      User.saveInstructor(newUser, newInstructor, function (err, user) {
+        console.log('Instructor created')
+      });
+    }
+
+    req.flash('success', 'User Added');
+    res.redirect('/');
   }
 });
 
