@@ -11,6 +11,8 @@ var Student = require('../models/student');
 // Unclude User Model
 var Instructor = require('../models/instructor');
 
+// var async = require('async'); // устарело - удалить
+
 // User Register
 router.get('/register', function(req, res, next) {
   console.log('router.get REGISTER');
@@ -77,11 +79,13 @@ router.post('/register', function (req, res, next) {
       });
 
       User.saveStudent(newUser, newStudent, function (err, user) {
-        console.log('Student created')
+        if(err) throw err;
+        console.log('Student created');
       });
+
     } else {
       console.log('Registering Instructor');
-      var newInstructor = new Штыекгсещк({
+      var newInstructor = new Instructor({
         first_name: first_name,
         last_name: last_name,
         adress: [{
@@ -95,11 +99,12 @@ router.post('/register', function (req, res, next) {
       });
 
       User.saveInstructor(newUser, newInstructor, function (err, user) {
+        if(err) throw err;
         console.log('Instructor created')
       });
     }
 
-    req.flash('success', 'User Added');
+    // req.flash('success', 'User Added');
     res.redirect('/');
   }
 });
