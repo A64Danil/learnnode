@@ -43,7 +43,7 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
 
 // Create Student User
 module.exports.saveStudent = function (newUser, newStudent, callback) {
-    bcrypt.hash(newUser.password, 10, async function (err, hash) {
+    bcrypt.hash(newUser.password, 10, function (err, hash) {
        if (err) throw err;
        // Set hash
         newUser.password = hash;

@@ -66,7 +66,7 @@ router.post('/register', function (req, res, next) {
       var newStudent = new Student({
         first_name: first_name,
         last_name: last_name,
-        adress: [{
+        address: [{
           street_address: street_address,
           city: city,
           state: state,
@@ -86,7 +86,7 @@ router.post('/register', function (req, res, next) {
       var newInstructor = new Instructor({
         first_name: first_name,
         last_name: last_name,
-        adress: [{
+        address: [{
           street_address: street_address,
           city: city,
           state: state,
