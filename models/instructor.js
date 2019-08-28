@@ -27,3 +27,8 @@ var InstructorSchema = mongoose.Schema({
 });
 
 var Instructor = module.exports = mongoose.model('instructor', InstructorSchema);
+
+module.exports.getInstructorByUsername = function (username, callback) {
+    var query = {username: username};
+    Instructor.findOne(query, callback);
+}
