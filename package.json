@@ -1,0 +1,29 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "Recipe Manager",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "*",
+    "consolidate": "*",
+    "dust": "*",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "express": "*",
+    "pg": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A64Danil/learnnode.git"
+  },
+  "author": "Danil X",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A64Danil/learnnode/issues"
+  },
+  "homepage": "https://github.com/A64Danil/learnnode#readme"
+}
