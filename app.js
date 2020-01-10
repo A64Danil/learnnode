@@ -3,12 +3,17 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     cons = require('consolidate'),
     dust = require('dustjs-helpers'),
-    pg = require('pg'),
+    { Pool } = require('pg'),
     app = express();
 
-// DB Conntect String
-var connect = "postres://onix:admin@localhost/recipeboookdb";
 
+
+// DB Conntect String
+var connect = "postgres://onix:admin@localhost/recipebookdb";
+
+const pg = new Pool({
+    connectionString: connect
+});
 // Assign Dust Engine To .dust Files
 app.engine('dust', cons.dust);
 
@@ -23,7 +28,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 app.get('/', function (req, res) {
-    res.render('index');
+    // PG connect
+    pg.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error fetching client from pool', err);
+        }
+        client.query('SELECT * FROM recipes', (err, result) => {
+            if (err) {
+                console.log(err.stack)
+            }
+            res.render('index', {recipes: result.rows});
+            done();
+        })
+
+    })
 });
 
 // Server
