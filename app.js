@@ -69,6 +69,19 @@ app.delete('/delete/:id', function (req, res) {
     });
 });
 
+app.post('/edit', function (req, res) {
+    // PG connect
+    pg.connect(function (err, client, done) {
+        if (err) {
+            return console.error('error fetching client from pool', err);
+        }
+        client.query('UPDATE recipes SET name=$1, ingredients=$2, directions=$3 WHERE id = $4', [req.body.name, req.body.ingredients, req.body.directions, req.body.id]);
+
+        done();
+        res.redirect('/');
+    });
+});
+
 // Server
 app.listen(3000, function () {
     console.log('Server Started on Port 3000');
