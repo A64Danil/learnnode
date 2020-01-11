@@ -1,0 +1,34 @@
+{
+  "name": "albumz",
+  "version": "1.0.0",
+  "description": "Music album manager",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "firebase": "*",
+    "morgan": "*",
+    "multer": "*",
+    "path": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A64Danil/learnnode.git"
+  },
+  "author": "Danil X",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A64Danil/learnnode/issues"
+  },
+  "homepage": "https://github.com/A64Danil/learnnode#readme"
+}
