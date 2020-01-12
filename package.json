@@ -12,7 +12,7 @@
     "express": "*",
     "express-session": "*",
     "express-validator": "*",
-    "firebase": "*",
+    "firebase": "2.4.2",
     "morgan": "*",
     "multer": "*",
     "path": "*"
